@@ -1,8 +1,6 @@
+import { useState } from "react";
 import { Button, Image, Modal } from "react-bootstrap";
 import "./App.css";
-import { useState } from "react";
-
-import sorriso from "./assets/sorriso.jpg";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -17,24 +15,25 @@ function App() {
 
   return (
     <>
-      <h1>
-        Olá minha nega <br /> quer namorar comigo?
-      </h1>
+      <h1>{import.meta.env.VITE_TITLE}</h1>
 
       <br />
 
       <div className="container" id="container">
         <Button variant="success" onClick={handleShow}>
-          Quero
+          {import.meta.env.VITE_CONFIRM_LABEL}
         </Button>
         <Button variant="danger" onMouseOver={replace}>
-          Não quero
+          {import.meta.env.VITE_DENY_LABEL}
         </Button>
       </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
-          <Image src={sorriso} className="w-100"></Image>
+          <Image
+            src={import.meta.env.VITE_RESPONSE_IMAGE}
+            className="w-100"
+          ></Image>
         </Modal.Body>
       </Modal>
     </>
